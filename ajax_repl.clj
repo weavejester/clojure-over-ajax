@@ -18,6 +18,7 @@
     [:html
       [:head
         [:title "Clojure REPL"]
+        (include-css "css/site.css")
         repl-scripts]
       [:body
         [:div#terminal

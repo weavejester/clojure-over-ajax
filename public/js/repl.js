@@ -27,9 +27,10 @@
 
 window.onload = function() {
     window.repl = new MouseApp.Repl('#repl', {
-        rows: 13,
+        columns: 80,
+        rows: 40,
         name: 'REPL',
-        greeting: "%+r Clojure %-r",
+        greeting: "Clojure",
         ps: '\033[1;31m>>\033[m',
         replUrl: '/repl'
     });

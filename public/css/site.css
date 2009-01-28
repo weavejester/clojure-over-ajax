@@ -63,9 +63,10 @@ ul.commands li strong { display: block; float: left; width: 60px; border: none; 
 #terminal {
     background-color: #f2f2f0;
     border: solid 1px #204a87;
-    width: 678px;
-    height: 240px;
+    width: 680px;
+    height: 480px;
     overflow: auto; 
+    margin: auto;
 }
 #repl {
     visibility: hidden;
@@ -80,7 +81,7 @@ ul.commands li strong { display: block; float: left; width: 60px; border: none; 
     margin: 0; padding: 0;
 }
 #repl div b {
-    background-color: #874a20;
+    background-color: #4466aa;
     color: #fedeac;
 }
 div.answer, div.stdout, div.no_answer, div.load {

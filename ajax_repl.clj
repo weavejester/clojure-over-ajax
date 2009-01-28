@@ -41,6 +41,14 @@
       (println (repl-exception e))
       (set! *e e))))
 
+(defmacro capture-vars
+  "Given a list of var names, return a map of name/value pairs."
+  [& names]
+  (reduce
+    (fn [m n] (assoc m `'~n n))
+    {}
+    names))
+
 (defn eval-with-session
   "Evaluate a command, keeping useful REPL state in the session."
   [session expr]
@@ -50,8 +58,13 @@
             *3   nil
             *e   nil]
     (in-ns (@session :ns 'user))
+    (doseq [[name value] (@session :vars)]
+      (var-set (eval `(var ~name)) value))
     (repl-eval expr)
-    (dosync (alter session assoc :ns (symbol (str *ns*))))))
+    (dosync
+      (alter session merge
+         {:ns   (symbol (str *ns*))
+          :vars (capture-vars *e *1 *2 *3)}))))
 
 (defn eval-repl-cmd
   "Evaluate a command and return the result."

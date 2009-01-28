@@ -7,9 +7,11 @@
               "/js/mouserepl_2.js"
               "/js/repl.js"))
 
+(def try-ruby
+  (link-to "http://tryruby.hobix.com/" "Try Ruby!"))
+
 (def credits
-  [:p "Based on code from _why's "
-    [:q (link-to "http://tryruby.hobix.com/" "Try Ruby!")]])
+  [:p "With javascript based on _why's: " try-ruby])
 
 (defn show-repl
   "HTML for the REPL index page"
@@ -28,7 +30,9 @@
 (defn eval-repl-cmd
   "Evaluate a command and return the result."
   [cmd]
-  (str "Run command: " cmd))
+  (with-out-str
+    (println
+      "=>" (eval (read-string cmd)))))
 
 (defservlet repl-servlet
   (GET "/"

@@ -44,6 +44,3 @@
         :next))
   (ANY "*"
     (page-not-found)))
-
-(run-server {:port 8080}
-  "/*" repl-servlet)

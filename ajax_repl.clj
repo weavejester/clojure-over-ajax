@@ -24,6 +24,7 @@
         (include-css "css/site.css")
         repl-scripts]
       [:body
+        [:h1 "Clojure REPL"]
         [:div#terminal
           [:div#repl]]
         credits]]))

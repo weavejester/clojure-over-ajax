@@ -75,7 +75,7 @@
 (defservlet repl-servlet
   (GET "/"
     (show-repl))
-  (GET "/repl"
+  (POST "/repl"
     (eval-repl-cmd session (params :cmd)))
   (GET "/*"
     (or (serve-file (route :*))
